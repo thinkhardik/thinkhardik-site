@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hardik Jain — IT Student &amp; Visual Storyteller</title>
+<meta name="description" content="Hardik Jain — IT student, video editor, videographer, photographer.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css">
+</head>
+<body data-theme="dark">
+
+  <!-- custom cursor -->
+  <div class="cursor-ring" aria-hidden="true"></div>
+  <div class="cursor-dot" aria-hidden="true"></div>
+
+  <!-- HUD chrome (camera viewfinder overlay) -->
+  <div class="hud" aria-hidden="true">
+    <span class="hud-tl">HJ&nbsp;/&nbsp;PORTFOLIO</span>
+    <span class="hud-tr" id="hudClock">REC 00:00:00</span>
+    <span class="hud-bl">f/1.8&nbsp;&nbsp;ISO 200</span>
+    <span class="hud-br" id="hudMode">MODE: DARK</span>
+    <span class="hud-corner c1"></span>
+    <span class="hud-corner c2"></span>
+    <span class="hud-corner c3"></span>
+    <span class="hud-corner c4"></span>
+  </div>
+
+  <!-- theme toggle -->
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark mode">
+    <span class="toggle-track">
+      <span class="toggle-thumb"></span>
+    </span>
+    <span class="toggle-label" id="toggleLabel">DARK</span>
+  </button>
+
+  <!-- ============ HOME / SPLIT SCREEN ============ -->
+  <main class="split" id="home">
+
+    <section class="panel panel-image" id="imagePanel">
+      <canvas id="particleCanvas"></canvas>
+      <p class="panel-caption">HOVER TO REFOCUS</p>
+    </section>
+
+    <section class="panel panel-info" id="infoPanel">
+      <div class="grade-wipe" aria-hidden="true"></div>
+
+      <div class="info-inner">
+        <p class="eyebrow">FRAME&nbsp;01 — INTRODUCTION</p>
+
+        <h1 class="name-title" id="nameTitle" data-text="HARDIK JAIN">
+          <span>HARDIK</span><span>JAIN</span>
+        </h1>
+
+        <p class="role-line">IT Student</p>
+
+        <p class="intro-text">
+          Shooting frames by day, shipping code by night — currently studying
+          Information Technology and learning to tell stories with a lens
+          and a keyboard in equal measure.
+        </p>
+
+        <ul class="social-row">
+          <li>
+            <a href="https://www.linkedin.com/in/thinkhardik" target="_blank" rel="noopener noreferrer" class="social-link" data-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.86 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+              <span>LinkedIn</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/thinkhardik" target="_blank" rel="noopener noreferrer" class="social-link" data-label="GitHub">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.98 5.24.98 11.52c0 5.02 3.26 9.28 7.78 10.78.57.1.78-.25.78-.55 0-.27-.01-1.16-.02-2.11-3.17.69-3.84-1.34-3.84-1.34-.52-1.32-1.27-1.67-1.27-1.67-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.67 1.25 3.32.95.1-.74.4-1.25.72-1.54-2.53-.29-5.19-1.27-5.19-5.63 0-1.24.44-2.26 1.17-3.06-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.14 1.17.91-.25 1.89-.38 2.86-.39.97.01 1.95.14 2.86.39 2.18-1.48 3.14-1.17 3.14-1.17.62 1.57.23 2.73.11 3.02.73.8 1.17 1.82 1.17 3.06 0 4.37-2.67 5.34-5.21 5.62.41.36.77 1.06.77 2.14 0 1.55-.01 2.79-.01 3.17 0 .3.2.66.79.55A11.03 11.03 0 0 0 23.02 11.5C23.02 5.24 18.27.5 12 .5z"/></svg>
+              <span>GitHub</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/thinkhardik/" target="_blank" rel="noopener noreferrer" class="social-link" data-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.24 2.22.41.56.21.96.47 1.38.89.42.42.68.82.89 1.38.17.42.36 1.05.41 2.22.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.24 1.8-.41 2.22-.21.56-.47.96-.89 1.38-.42.42-.82.68-1.38.89-.42.17-1.05.36-2.22.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.24-2.22-.41a3.72 3.72 0 0 1-1.38-.89 3.72 3.72 0 0 1-.89-1.38c-.17-.42-.36-1.05-.41-2.22-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.24-1.8.41-2.22.21-.56.47-.96.89-1.38.42-.42.82-.68 1.38-.89.42-.17 1.05-.36 2.22-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07c-1.28.06-2.15.26-2.91.56a5.87 5.87 0 0 0-2.13 1.38A5.87 5.87 0 0 0 .63 4.14c-.3.76-.5 1.63-.56 2.91C0 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.28.26 2.15.56 2.91.3.79.71 1.46 1.38 2.13.67.67 1.34 1.08 2.13 1.38.76.3 1.63.5 2.91.56C8.33 24 8.74 24 12 24s3.67-.01 4.95-.07c1.28-.06 2.15-.26 2.91-.56a5.87 5.87 0 0 0 2.13-1.38 5.87 5.87 0 0 0 1.38-2.13c.3-.76.5-1.63.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.28-.26-2.15-.56-2.91a5.87 5.87 0 0 0-1.38-2.13A5.87 5.87 0 0 0 19.86.63c-.76-.3-1.63-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84zm0 10.16A4 4 0 1 1 12 8a4 4 0 0 1 0 8zm6.4-10.4a1.44 1.44 0 1 1 0-2.88 1.44 1.44 0 0 1 0 2.88z"/></svg>
+              <span>Instagram</span>
+            </a>
+          </li>
+          <li>
+            <a href="mailto:jainhardik02022007@gmail.com" class="social-link" data-label="Mail">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 5.5A2.5 2.5 0 0 1 4.5 3h15A2.5 2.5 0 0 1 22 5.5v13a2.5 2.5 0 0 1-2.5 2.5h-15A2.5 2.5 0 0 1 2 18.5v-13zm2.2.5 7.8 6.2L19.8 6H4.2zM20 7.8l-7.4 5.9a1 1 0 0 1-1.2 0L4 7.8v10.7c0 .28.22.5.5.5h15c.28 0 .5-.22.5-.5V7.8z"/></svg>
+              <span>Mail</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <button class="menu-trigger" id="menuTrigger" aria-haspopup="true" aria-expanded="false" aria-label="Open menu">
+        <span class="menu-trigger-text">MENU</span>
+        <span class="menu-trigger-bars"><i></i><i></i><i></i></span>
+      </button>
+
+      <p class="click-hint">click anywhere on this side to open menu</p>
+    </section>
+  </main>
+
+  <!-- ============ EXPLODING NAV OVERLAY ============ -->
+  <nav class="nav-overlay" id="navOverlay" aria-hidden="true">
+    <div class="shard shard-1"></div>
+    <div class="shard shard-2"></div>
+    <div class="shard shard-3"></div>
+    <div class="shard shard-4"></div>
+
+    <button class="nav-close" id="navClose" aria-label="Close menu">✕</button>
+
+    <ol class="nav-list">
+      <li><a href="#about" class="nav-link" data-target="about"><span class="nav-index">01</span><span class="nav-word">About&nbsp;Me</span></a></li>
+      <li><a href="#skills" class="nav-link" data-target="skills"><span class="nav-index">02</span><span class="nav-word">Skills</span></a></li>
+      <li><a href="#journey" class="nav-link" data-target="journey"><span class="nav-index">03</span><span class="nav-word">Journey</span></a></li>
+      <li><a href="#certificates" class="nav-link" data-target="certificates"><span class="nav-index">04</span><span class="nav-word">Certificates</span></a></li>
+    </ol>
+  </nav>
+
+  <!-- ============ CONTENT PAGES ============ -->
+  <div class="page-stage" id="pageStage">
+
+    <button class="back-home" id="backHome">
+      <span>◂</span> BACK TO FRAME 01
+    </button>
+
+    <section class="content-page" id="about" data-page="about">
+      <p class="eyebrow">FRAME&nbsp;02 — ABOUT ME</p>
+      <h2 class="page-title">About&nbsp;Me</h2>
+      <p class="page-copy">
+        Hi, welcome to my website! My name is Hardik Jain and I'm currently
+        pursuing my degree in Information Technology at Jaipur Engineering
+        College and Research Centre. Somewhere between debugging code and
+        colour-grading footage, I found the two crafts speak the same
+        language: both are about controlling light, structure, and timing
+        until the result feels inevitable.
+      </p>
+    </section>
+
+    <section class="content-page" id="skills" data-page="skills">
+      <p class="eyebrow">FRAME&nbsp;03 — SKILLS</p>
+      <h2 class="page-title">Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <span class="skill-tag">LANG</span>
+          <h3>JavaScript</h3>
+          <p>Building interactive, logic-driven experiences on the web.</p>
+        </div>
+        <div class="skill-card">
+          <span class="skill-tag">POST</span>
+          <h3>Video Editing</h3>
+          <p>Cutting, colour-grading and pacing footage into a story.</p>
+        </div>
+        <div class="skill-card">
+          <span class="skill-tag">SHOOT</span>
+          <h3>Videography</h3>
+          <p>Framing motion — composition, movement and light on set.</p>
+        </div>
+        <div class="skill-card">
+          <span class="skill-tag">STILL</span>
+          <h3>Photography</h3>
+          <p>Freezing a single frame that still carries the whole story.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-page" id="journey" data-page="journey">
+      <p class="eyebrow">FRAME&nbsp;04 — JOURNEY</p>
+      <h2 class="page-title">Journey</h2>
+      <div class="journey-track">
+        <div class="journey-node">
+          <span class="journey-dot"></span>
+          <div class="journey-copy">
+            <h3>Just Started</h3>
+            <p>The reel just started rolling — first frame, first line of code. Nothing to scroll through yet, but the timeline is running.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-page" id="certificates" data-page="certificates">
+      <p class="eyebrow">FRAME&nbsp;05 — CERTIFICATES</p>
+      <h2 class="page-title">Certificates</h2>
+      <p class="page-copy muted">
+        No certificates in the reel yet — this frame is reserved for what's
+        coming next. Check back soon.
+      </p>
+    </section>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
