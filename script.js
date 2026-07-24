@@ -122,6 +122,54 @@
   }
 
   /* ----------------------------------------------------------
+     VIEWFINDER (touch): same tilt / glow / particle effect,
+     driven by a finger acting as the cursor
+  ---------------------------------------------------------- */
+  if (viewfinder && isTouch) {
+    function updateViewfinderFromPoint(clientX, clientY){
+      const rect = viewfinder.getBoundingClientRect();
+      const x = Math.min(Math.max(clientX - rect.left, 0), rect.width);
+      const y = Math.min(Math.max(clientY - rect.top, 0), rect.height);
+      const px = x / rect.width - 0.5;
+      const py = y / rect.height - 0.5;
+
+      const rotateY = px * 16;
+      const rotateX = -py * 16;
+      tiltWrap.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg) translateZ(10px)`;
+
+      glow.style.left = `${x}px`;
+      glow.style.top = `${y}px`;
+
+      return { x, y };
+    }
+
+    viewfinder.addEventListener('touchstart', e => {
+      viewfinder.classList.add('is-active');
+      const touch = e.touches[0];
+      if (touch) updateViewfinderFromPoint(touch.clientX, touch.clientY);
+
+      particleTimer = setInterval(() => {
+        const rect = viewfinder.getBoundingClientRect();
+        spawnParticle(Math.random() * rect.width, Math.random() * rect.height);
+      }, 220);
+    }, { passive: true });
+
+    viewfinder.addEventListener('touchmove', e => {
+      const touch = e.touches[0];
+      if (touch) updateViewfinderFromPoint(touch.clientX, touch.clientY);
+    }, { passive: true });
+
+    function resetViewfinderTouch(){
+      viewfinder.classList.remove('is-active');
+      tiltWrap.style.transform = 'rotateY(0deg) rotateX(0deg) translateZ(0)';
+      clearInterval(particleTimer);
+    }
+
+    viewfinder.addEventListener('touchend', resetViewfinderTouch);
+    viewfinder.addEventListener('touchcancel', resetViewfinderTouch);
+  }
+
+  /* ----------------------------------------------------------
      NAME LETTER HOVER
   ---------------------------------------------------------- */
   document.querySelectorAll('.hero__name-line').forEach(line => {
